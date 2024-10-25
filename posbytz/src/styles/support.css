@@ -1,0 +1,817 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    color: #051441;
+    padding-top: 80px; /* Adjust according to the height of the header */
+}
+
+/* Top Bar (.hea) */
+.hea {
+    background-color: #13112d;; /* Light background color */
+    padding: 10px 20px; /* Padding for top bar */
+    text-align: left; /* Center the text */
+    border-bottom: 1px solid #ddd; /* Light border at the bottom */
+    position: fixed; /* Fix the top bar at the top */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    right: 0; /* Align to the right */
+    z-index: 1001; /* Ensure it is above other content, below the main nav */
+    margin: 0; /* Remove any default margins */
+    box-sizing: border-box;
+}
+
+.hea a {
+    color: white;
+    text-decoration: none;
+}
+
+.hea a span {
+    color: #c3c1ca;
+}
+
+/* Main Navigation (.flex-container1) */
+.flex-container1.navbar-support {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+    background-color: #9b51e0; /* Initial background color of the nav */
+    padding: 10px 20px; /* Padding for nav */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    position: fixed; /* Fix the navigation at the top */
+    top: 40px; /* Position at the top */
+    left: 0; /* Align to the left */
+    right: 0; /* Align to the right */
+    z-index: 1000; /* Ensure it is above other content */
+    margin: 0;
+    transition: background-color 0.3s, color 0.3s;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.flex-container1.navbar-support a img {
+    width: 133px;
+    height: 50px;
+}
+
+.main_logo_img {
+    display: block; /* Ensure the main logo is visible */
+}
+
+.sticky_logo_img {
+    display: none; /* Initially hide the sticky logo */
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.icons ul {
+    list-style: none;
+    display: flex;
+    position: relative;
+}
+
+.icons ul li {
+    position: relative;
+}
+
+.navbar-support .icons ul li a {
+    color: #fff; /* Initial text color */
+    text-decoration: none;
+    padding: 10px 0; /* Padding for the anchor */
+    display: inline-block;
+    position: relative;
+    transition: color 0.3s;
+    padding-right: 19px;
+}
+
+.icons ul li a:hover {
+    text-decoration: underline;
+    color: #FF8C00 !important;
+}
+
+.icons ul li ul.subnav-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    display: none;
+    min-width: 200px;
+    z-index: 1;
+}
+
+.icons ul li:hover > ul.subnav-content {
+    display: block;
+}
+
+.icons ul li ul.subnav-content a {
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #051441 !important;
+    white-space: nowrap;
+    display: block;
+}
+
+.icons ul li ul.subnav-content a:hover {
+    background-color: #f0f0f0;
+    color: #FF8C00 !important;
+}
+
+/* Add caret icon spacing */
+.icons ul li a i {
+    margin-left: 2px;
+    font-size: 12px;
+}
+
+
+/* Hover effect: Text color and bottom border */
+.icons ul li a:hover {
+    color: #FF8C00 !important; /* Change text color to orange */
+}
+
+/* Subnav content dropdown styling */
+.icons ul li.subnav:hover .subnav-content {
+    color: #FF8C00 !important;
+    display: block; /* Show the dropdown on hover */
+}
+
+/* Subnav dropdown hidden by default */
+.subnav-content {
+    display: none;
+    position: absolute;
+    background-color: #fff; /* Dropdown background */
+    min-width: 160px;
+    z-index: 1;
+    color: #FF8C00;
+}
+
+/* Styling individual dropdown items */
+.subnav:hover .subnav-content {
+    display: block;
+}
+
+/* Hover effect for dropdown items */
+.subnav-content li a:hover {
+    background-color: #FF8C00; /* Background changes to orange on hover */
+    color: #fff; /* Text changes to white on hover */
+    color: #FF8C00 !important;
+}
+.subnav-content li a:visited {
+    color: #051441 !important;  /* Enforce the color for visited links */
+}
+.sticky .subnav-content li a {
+    color: #051441 !important;
+}
+
+
+/* Button Styling */
+.button-started {
+    background-color: darkorange;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    font-weight: bolder;
+}
+
+.button-started:hover {
+    background-color: #ff9800;
+}
+
+/* Responsive Header (.header) */
+.header {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    display: none; /* Initially hidden, shown on small screens */
+    z-index: 1000;
+}
+
+.header .logo img {
+    height: 50px;
+}
+
+.hamb {
+    cursor: pointer;
+    padding: 20px;
+    display: none; /* Hidden on large screens */
+}
+
+.hamb-line {
+    background: orange;
+    display: block;
+    height: 2px;
+    position: relative;
+    width: 24px;
+}
+
+.hamb-line::before,
+.hamb-line::after {
+    background: orange;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all 0.2s ease-out;
+    width: 100%;
+}
+
+.hamb-line::before {
+    top: 5px;
+}
+
+.hamb-line::after {
+    top: -5px;
+}
+
+.nav {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s ease-out;
+    background-color: whitesmoke;
+    display: flex;
+}
+
+.side-menu:checked ~ .header .nav {
+    max-height: 500px; /* Adjust as needed */
+}
+
+.side-menu:checked ~ .header .hamb .hamb-line {
+    background: transparent;
+}
+
+.side-menu:checked ~ .header .hamb .hamb-line::before {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+.side-menu:checked ~ .header .hamb .hamb-line::after {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.nav ul {
+    list-style: none;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav ul li {
+    position: relative;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: black;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav ul li a:hover {
+    background-color: #ddd;
+    border-radius: 4px;
+}
+
+.nav ul li ul.subnav-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    display: none;
+    min-width: 200px;
+    z-index: 1;
+}
+
+.nav ul li:hover > ul.subnav-content {
+    display: block;
+}
+
+.nav ul li ul.subnav-content a {
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #051441;
+    white-space: nowrap;
+}
+
+.nav ul li ul.subnav-content a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Add caret icon spacing */
+.nav ul li a i {
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.icons ul li a,
+.nav ul li a {
+    padding: 0px 9px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+/* Style the caret icon for better alignment */
+.icons ul li a i,
+.nav ul li a i {
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+/* Hover effect for all dropdowns */
+.nav ul li:hover > a {
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+
+/* Ensure dropdown content positioning */
+.icons ul li ul.subnav-content,
+.nav ul li ul.subnav-content {
+    left: 0;
+    top: 100%;
+}
+
+/* Ensure dropdowns stack properly */
+.icons ul li ul.subnav-content a,
+.nav ul li ul.subnav-content a {
+    width: 100%;
+}
+
+
+/* Hero Section */
+.hero {
+    background-color: #9b51e0; /* New background color */
+    padding: 60px 0;
+    text-align: center;
+    padding-top: 170px;
+    padding-bottom: 140px;
+    color: white; /* Set text color to white */
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+    color: white; /* Ensure the heading text is white */
+}
+
+.breadcrumbs {
+    font-size: 16px;
+    color: white; /* Breadcrumb text color */
+    font-weight: 400;
+}
+
+.breadcrumbs a {
+    color: white; /* Breadcrumb link color */
+    text-decoration: none;
+    font-weight: 400;
+}
+
+/* Help section */
+
+.help-section {
+    padding: 40px 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.help-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.help-header h2 {
+    font-size: 2rem;
+    color: #051441;
+    margin-bottom: 30px;
+}
+
+.help-grid {
+    padding-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.help-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding-bottom: 50px;
+}
+
+.help-item:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.help-icon i {
+    font-size: 30px;
+    color: #FF8C00;
+    margin-bottom: 15px;
+    border: 3px solid #69727d;
+    border-color: #FF8C00;
+    border-radius: 50%;
+    padding: .5em;
+    display: inline-block;
+
+}
+
+.help-content h2 {
+    color: #051441;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.2em;
+}
+
+.help-content p {
+    padding-top: 20px;
+    padding-bottom: 5px;
+    color: gray;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.help-button .elementor-button {
+    margin-top: 15px;
+    padding: 15px 30px;
+    font-size: 1rem;
+    background-color: #FF8C00;
+    color: #fff;
+    border-radius: 40px;
+    text-decoration: none;
+}
+
+.help-button .elementor-button:hover {
+    background-color: #fff;
+    color: #FF8C00;
+}
+
+.help-button {
+    padding-top: 40px;
+}
+
+@media (max-width: 768px) {
+    .help-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/*updated */
+.help-section {
+    padding: 40px 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.help-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.help-header h2 {
+    font-size: 2rem;
+    color: #051441;
+    margin-bottom: 30px;
+}
+
+.help-grid {
+    padding-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.help-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding-bottom: 50px;
+}
+
+.help-item:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.help-icon i {
+    font-size: 30px;
+    color: #FF8C00;
+    margin-bottom: 15px;
+    border: 3px solid #69727d;
+    border-color: #FF8C00;
+    border-radius: 50%;
+    padding: .5em;
+    display: inline-block;
+}
+
+.help-content h2 {
+    color: #051441;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.2em;
+}
+
+.help-content p {
+    padding-top: 20px;
+    padding-bottom: 5px;
+    color: gray;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.help-button .elementor-button {
+    margin-top: 15px;
+    padding: 15px 30px;
+    font-size: 1rem;
+    background-color: #FF8C00;
+    color: #fff;
+    border-radius: 40px;
+    text-decoration: none;
+}
+
+.help-button .elementor-button:hover {
+    background-color: #fff;
+    color: #FF8C00;
+}
+
+.help-button {
+    padding-top: 40px;
+}
+
+@media (max-width: 768px) {
+    .help-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Unique help section styling */
+
+.unique-help-section {
+    padding: 40px 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+    padding-top: 60px;
+}
+
+.unique-help-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.unique-help-header h2 {
+    font-size: 2rem;
+    color: #051441;
+    margin-bottom: 30px;
+}
+
+.unique-help-header p {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 40px;
+}
+
+.unique-help-grid {
+    padding-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* 1x3 grid layout */
+    gap: 30px;
+}
+
+.unique-help-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding-bottom: 50px;
+}
+
+.unique-help-item:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.unique-help-icon i {
+    font-size: 30px;
+    color: #FF8C00;
+    margin-bottom: 15px;
+    border: 3px solid #69727d;
+    border-color: #FF8C00;
+    border-radius: 50%;
+    padding: .5em;
+    display: inline-block;
+}
+
+.unique-help-content h2 {
+    color: #051441;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.2em;
+}
+
+.unique-help-content p {
+    padding-top: 20px;
+    padding-bottom: 5px;
+    color: gray;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.unique-help-button .elementor-button {
+    margin-top: 15px;
+    padding: 15px 30px;
+    font-size: 1rem;
+    background-color: #FF8C00;
+    color: #fff;
+    border-radius: 40px;
+    text-decoration: none;
+}
+
+.unique-help-button .elementor-button:hover {
+    background-color: #fff;
+    color: #FF8C00;
+}
+
+.unique-help-button {
+    padding-top: 40px;
+}
+
+.unique-h2 {
+    color: #263b5e;
+    font-size: 20px;
+    line-height: 28px;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .unique-help-grid {
+        grid-template-columns: 1fr; /* Switch to single-column layout on mobile */
+    }
+}
+
+/* */
+/* Whatsapp support section */
+.whatsapp-support-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    padding-left: 90px;
+}
+
+.whatsapp-support-text {
+    width: 739.983px;
+    max-width: 100%;
+}
+
+.whatsapp-support-text h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #051441;
+}
+
+.whatsapp-support-text p {
+    font-size: 1rem;
+    color: #69727d;
+    line-height: 1.5;
+}
+
+.whatsapp-support-action {
+    width: 359.983px;
+    max-width: 100%;
+    text-align: right;
+    padding-right: 160px;
+}
+
+.whatsapp-button {
+    display: inline-block;
+    padding: 10px 30px;
+    font-size: 1rem;
+    background-color: #FF8C00;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .whatsapp-support-section {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .whatsapp-support-text,
+    .whatsapp-support-action {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+.footer-section {
+    background-color: #07112D;
+    padding: 40px 0;
+    color: aliceblue;
+    margin-top: 30px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 1x4 grid */
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-item {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .footer-logo img {
+    width: 150px;
+  }
+
+  .footer-description {
+    font-size: 14px;
+  }
+
+  .footer-heading h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .footer-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-links li {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+
+  .footer-links li:hover{
+    color: #ff8800;
+  }
+
+  .social-icons a {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 18px;
+    color: aliceblue;
+    text-decoration: none;
+  }
+
+  .social-icons a:hover {
+    color: #FF8C00;
+  }
+
+.bytize-widget-divider {
+    width: 95%;
+    border-top: 1px solid #2E2E2E;
+}
+
+.bytize-heading-title {
+    font-size: 15px;
+    line-height: 1;
+    
+}
+
+.bytize-widget-wrap {
+    text-align: right;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.bytize-divider{
+    padding-top: 20px;
+}

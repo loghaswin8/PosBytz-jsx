@@ -1,0 +1,642 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    color: #051441;
+    padding-top: 80px; /* Adjust according to the height of the header */
+}
+
+/* Top Bar (.hea) */
+.hea {
+    background-color: #13112d;; /* Light background color */
+    padding: 10px 20px; /* Padding for top bar */
+    text-align: left; /* Center the text */
+    border-bottom: 1px solid #ddd; /* Light border at the bottom */
+    position: fixed; /* Fix the top bar at the top */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    right: 0; /* Align to the right */
+    z-index: 1001; /* Ensure it is above other content, below the main nav */
+    margin: 0; /* Remove any default margins */
+    box-sizing: border-box;
+}
+
+.hea a {
+    color: white;
+    text-decoration: none;
+}
+
+.hea a span {
+    color: #c3c1ca;
+}
+
+/* Main Navigation (.flex-container1) */
+.flex-container1.navbar-about {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+    background-color: #9b51e0; /* Initial background color of the nav */
+    padding: 10px 20px; /* Padding for nav */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    position: fixed; /* Fix the navigation at the top */
+    top: 40px; /* Position at the top */
+    left: 0; /* Align to the left */
+    right: 0; /* Align to the right */
+    z-index: 1000; /* Ensure it is above other content */
+    margin: 0;
+    transition: background-color 0.3s, color 0.3s;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.flex-container1.navbar-about a img {
+    width: 133px;
+    height: 50px;
+}
+
+.main_logo_img {
+    display: block; /* Ensure the main logo is visible */
+}
+
+.sticky_logo_img {
+    display: none; /* Initially hide the sticky logo */
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.icons ul {
+    list-style: none;
+    display: flex;
+    position: relative;
+}
+
+.icons ul li {
+    position: relative;
+}
+
+.navbar-about .icons ul li a {
+    color: #fff; /* Initial text color */
+    text-decoration: none;
+    padding: 10px 0; /* Padding for the anchor */
+    display: inline-block;
+    position: relative;
+    transition: color 0.3s;
+    padding-right: 19px;
+}
+
+.icons ul li a:hover {
+    text-decoration: underline;
+    color: #FF8C00 !important;
+}
+
+.icons ul li ul.subnav-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    display: none;
+    min-width: 200px;
+    z-index: 1;
+}
+
+.icons ul li:hover > ul.subnav-content {
+    display: block;
+}
+
+.icons ul li ul.subnav-content a {
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #051441 !important;
+    white-space: nowrap;
+    display: block;
+}
+
+.icons ul li ul.subnav-content a:hover {
+    background-color: #f0f0f0;
+    color: #FF8C00 !important;
+}
+
+/* Add caret icon spacing */
+.icons ul li a i {
+    margin-left: 2px;
+    font-size: 12px;
+}
+
+
+/* Hover effect: Text color and bottom border */
+.icons ul li a:hover {
+    color: #FF8C00 !important; /* Change text color to orange */
+}
+
+/* Subnav content dropdown styling */
+.icons ul li.subnav:hover .subnav-content {
+    color: #FF8C00 !important;
+    display: block; /* Show the dropdown on hover */
+}
+
+/* Subnav dropdown hidden by default */
+.subnav-content {
+    display: none;
+    position: absolute;
+    background-color: #fff; /* Dropdown background */
+    min-width: 160px;
+    z-index: 1;
+    color: #FF8C00;
+}
+
+/* Styling individual dropdown items */
+.subnav:hover .subnav-content {
+    display: block;
+}
+
+/* Hover effect for dropdown items */
+.subnav-content li a:hover {
+    background-color: #FF8C00; /* Background changes to orange on hover */
+    color: #fff; /* Text changes to white on hover */
+    color: #FF8C00 !important;
+}
+.subnav-content li a:visited {
+    color: #051441 !important;  /* Enforce the color for visited links */
+}
+.sticky .subnav-content li a {
+    color: #051441 !important;
+}
+
+
+/* Button Styling */
+.button-started {
+    background-color: darkorange;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    font-weight: bolder;
+}
+
+.button-started:hover {
+    background-color: #ff9800;
+}
+
+/* Responsive Header (.header) */
+.header {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    display: none; /* Initially hidden, shown on small screens */
+    z-index: 1000;
+}
+
+.header .logo img {
+    height: 50px;
+}
+
+.hamb {
+    cursor: pointer;
+    padding: 20px;
+    display: none; /* Hidden on large screens */
+}
+
+.hamb-line {
+    background: orange;
+    display: block;
+    height: 2px;
+    position: relative;
+    width: 24px;
+}
+
+.hamb-line::before,
+.hamb-line::after {
+    background: orange;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all 0.2s ease-out;
+    width: 100%;
+}
+
+.hamb-line::before {
+    top: 5px;
+}
+
+.hamb-line::after {
+    top: -5px;
+}
+
+.nav {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s ease-out;
+    background-color: whitesmoke;
+    display: flex;
+}
+
+.side-menu:checked ~ .header .nav {
+    max-height: 500px; /* Adjust as needed */
+}
+
+.side-menu:checked ~ .header .hamb .hamb-line {
+    background: transparent;
+}
+
+.side-menu:checked ~ .header .hamb .hamb-line::before {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+.side-menu:checked ~ .header .hamb .hamb-line::after {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.nav ul {
+    list-style: none;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav ul li {
+    position: relative;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: black;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav ul li a:hover {
+    background-color: #ddd;
+    border-radius: 4px;
+}
+
+.nav ul li ul.subnav-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    display: none;
+    min-width: 200px;
+    z-index: 1;
+}
+
+.nav ul li:hover > ul.subnav-content {
+    display: block;
+}
+
+.nav ul li ul.subnav-content a {
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #051441;
+    white-space: nowrap;
+}
+
+.nav ul li ul.subnav-content a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Add caret icon spacing */
+.nav ul li a i {
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.icons ul li a,
+.nav ul li a {
+    padding: 0px 9px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+/* Style the caret icon for better alignment */
+.icons ul li a i,
+.nav ul li a i {
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+/* Hover effect for all dropdowns */
+.nav ul li:hover > a {
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+
+/* Ensure dropdown content positioning */
+.icons ul li ul.subnav-content,
+.nav ul li ul.subnav-content {
+    left: 0;
+    top: 100%;
+}
+
+/* Ensure dropdowns stack properly */
+.icons ul li ul.subnav-content a,
+.nav ul li ul.subnav-content a {
+    width: 100%;
+}
+
+/*updated */
+
+/* Hero Section Styling */
+.hero {
+    background-color: #9b51e0; /* New background color */
+    padding: 60px 0;
+    text-align: center;
+    padding-top: 170px;
+    padding-bottom: 140px;
+    color: white; /* Center the text horizontally */
+  }
+  
+  .hero .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+  }
+  
+  .hero h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+    color: white; /* Adjust the color to match your theme */
+  }
+  
+  .hero .breadcrumbs {
+    font-size: 16px;
+    color: white;  /* Light grey for breadcrumbs */
+  }
+  
+  .hero .breadcrumbs a {
+    color: white; /* Breadcrumb link color */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  .hero .breadcrumbs a:hover {
+    text-decoration: none; /* Underline on hover */
+  }
+  
+  .hero .breadcrumbs span {
+    margin: 0 5px; /* Add spacing between breadcrumbs */
+  }
+  
+
+/*about section */
+
+.about-section {
+    padding: 20px;
+}
+
+.about-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items to the top */
+    padding: 15px;
+    padding-top: 120px;
+}
+
+.about-left, .about-right {
+    width: 48%; /* Adjust width to balance space */
+    padding: 10px;
+}
+
+.about-left{
+    padding-left: 40px;
+}
+
+.about-left h2 {
+    color: #000000;
+    font-family: "Roboto", Sans-serif;
+    font-size: 50px;
+    font-weight: 400;
+}
+
+.about-left p {
+    margin-top: 10px;
+    margin-bottom: 1rem;
+    padding-bottom: 7px;
+}
+
+.about-right{
+    padding: 15px;
+    align-content: center;
+    align-items: center;
+    padding-top: 100px;
+}
+
+.about-right img {
+    text-align: center;
+    max-width: 150%; /* Ensure images are responsive */
+    display: block;
+    margin-bottom: 10px;
+    align-content: center;
+    align-items: center;
+    padding-left: 150px;
+}
+
+.about-right p {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    color: grey;
+}
+
+.logo-img-2{
+    padding-left: 50px;
+}
+
+/* Section styling */
+section {
+    padding: 50px 0;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Main container for the grid */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 1 row, 3 columns */
+    gap: 20px; /* Space between the grid items */
+    justify-items: center;
+    align-items: start;
+    padding-top: 95px;
+}
+
+/* Each card within the grid */
+.grid-item {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%; /* Ensures the card takes the full column width */
+    max-width: 300px;
+}
+
+/* Icon styling */
+ .grid-item i {
+    font-size: 44px;
+    color: #ff8300; /* Adjust to match the icon color */
+    margin-bottom: 20px;
+}
+
+/* Card title */
+.grid-item h2 a {
+    font-size: 20px;
+    color: #263b5e;  /* Updated color */
+    line-height: 28px;  /* Updated line height */
+    margin-bottom: 10px;
+    text-decoration: none; /* Remove underline */
+}
+
+/* Card description */
+.grid-item p {
+    font-size: 16px;
+    margin-bottom: 50px;
+}
+
+/* Arrow styling */
+.elementor-icon i {
+    font-size: 24px;
+    color: #afb8ce; /* Grey color by default */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+    text-decoration: none; /* Remove underline */
+}
+
+.elementor-icon {
+    color: rgb(182, 177, 177);
+    font-size: 30px;
+    font-weight: lighter;
+}
+
+/* Arrow color change on hover */
+.elementor-icon:hover i {
+    color: #ff8c00; /* Orange color on hover */
+}
+
+
+/* Remove underline for arrow and link */
+.grid-item a {
+    text-decoration: none; /* Remove underline for both arrow and link */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* For small screens, stack items */
+    }
+}
+
+
+/* footer section */
+.footer-section {
+    background-color: #07112D;
+    padding: 40px 0;
+    color: aliceblue;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 1x4 grid */
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-item {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .footer-logo img {
+    width: 150px;
+  }
+
+  .footer-description {
+    font-size: 14px;
+  }
+
+  .footer-heading h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .footer-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-links li {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  .footer-links li:hover{
+    color: #ff8800;
+  }
+
+  .social-icons a {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 18px;
+    color: aliceblue;
+    text-decoration: none;
+  }
+
+  .social-icons a:hover {
+    color: #FF8C00;
+  }
+
+  .navbar-about .bytize-widget-divider {
+    width: 95%;
+    border-top: 1px solid #2E2E2E;
+}
+
+.bytize-heading-title {
+    font-size: 15px;
+    line-height: 1;
+    
+}
+
+.bytize-widget-wrap {
+    text-align: right;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.navbar-about .bytize-divider{
+    padding-top: 20px;
+}
+
+#navbar {
+    background-color: #9b51e0;
+}
