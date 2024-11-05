@@ -2,7 +2,7 @@ import React from 'react';
 
 const BusinessSection = ({ businessData }) => {
   if (!businessData) {
-    return <div>Loading...</div>;  // Handle case when data isn't loaded yet
+    return <div>Loading...</div>;  
   }
 
   return (

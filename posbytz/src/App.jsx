@@ -1,7 +1,7 @@
 // src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import routes from "./route"; // Import the routes array
+import routes from "./route"; 
 import './styles/App.css';
 
 const App = () => {
@@ -12,7 +12,8 @@ const App = () => {
           <Route 
             key={index} 
             path={route.path} 
-            element={<route.component />} // Dynamically render components
+            exact={route.exact}
+            element={<route.component />} 
           />
         ))}
       </Routes>

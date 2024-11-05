@@ -4,30 +4,30 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 const TestimonialsSlider = ({ testimonialsData }) => {
-
   const PrevArrow = ({ onClick }) => (
     <button
-      className="absolute top-1/2 left-[-30px] transform -translate-y-1/2 bg-white shadow-lg border rounded-full p-2 z-10"
+      className="absolute top-[-60px] right-[90px] bg-white shadow-lg border rounded-full p-2 z-10"
       onClick={onClick}
       aria-label="Previous Slide"
     >
-      <svg className="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg className="h-8 w-8 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
       </svg>
     </button>
   );
 
-  const NextArrow = ({ onClick }) => (
+const NextArrow = ({ onClick }) => (
     <button
-      className="absolute top-1/2 right-[-30px] transform -translate-y-1/2 bg-white shadow-lg border rounded-full p-2 z-10"
+      className="absolute top-[-60px] right-[30px] bg-white shadow-lg border rounded-full p-2 z-10"
       onClick={onClick}
       aria-label="Next Slide"
     >
-      <svg className="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg className="h-8 w-8 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
       </svg>
     </button>
   );
+
 
   const settings = {
     dots: true,
@@ -56,9 +56,11 @@ const TestimonialsSlider = ({ testimonialsData }) => {
     ],
   };
 
+  const getImagePath = (imageName) => `/images/${imageName}`;
+
   return (
     <section className="mt-[60px] px-4">
-      <h2 className="text-[#051441] font-medium font-sans text-[40px] leading-[50px] mb-10 ml-[90px]">
+      <h2 className="text-[#051441] font-medium font-sans text-[40px] leading-[50px] mb-10 ml-[90px] pb-[50px]">
         Customer Testimonials
       </h2>
       <div className="relative mx-auto max-w-[1200px]">
@@ -67,7 +69,7 @@ const TestimonialsSlider = ({ testimonialsData }) => {
             <div key={index} className="p-6 bg-white border border-white shadow-lg rounded-lg mx-2 h-[250px] relative">
               <div className="flex items-center mb-4">
                 <img
-                  src={require(`../../images/${testimonial.img}`)}
+                  src={getImagePath(testimonial.img)}
                   alt={testimonial.name}
                   className="w-16 h-16 rounded-full mr-4"
                 />

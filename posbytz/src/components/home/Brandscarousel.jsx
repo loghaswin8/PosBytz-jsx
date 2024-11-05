@@ -1,5 +1,3 @@
-// src/components/Brandscarousel.jsx
-
 import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -63,7 +61,7 @@ const Brandscarousel = ({ brandRows }) => {
     return (
         <div className="w-full px-4 py-8 mx-auto relative">
             {Object.keys(brandRows).map((rowKey, index) => (
-                brandRows[rowKey].length > 0 && (
+                Array.isArray(brandRows[rowKey]) && brandRows[rowKey].length > 0 ? (
                     <div key={index} className="mb-8">
                         <Slider {...settings}>
                             {brandRows[rowKey].map((brand, idx) => (
@@ -77,10 +75,11 @@ const Brandscarousel = ({ brandRows }) => {
                             ))}
                         </Slider>
                     </div>
-                )
+                ) : null // Render nothing if not an array
             ))}
         </div>
     );
+    
 };
 
 export default Brandscarousel;

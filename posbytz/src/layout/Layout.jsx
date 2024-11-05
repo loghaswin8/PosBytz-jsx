@@ -1,49 +1,70 @@
 import Navbar from "../components/navbar";
 import Footer from "../components/Footer";
 import { useState, useEffect } from 'react';
-import axios from 'axios'; // Import Axios
+import ApiService from '../api/ApiService';
+
 
 export default function Layout({ children }) {
-    const [homeData, setHomeData] = useState(null);
     const [navbarData, setNavbarData] = useState(null);
-    const [footerData, setFooterData] = useState(null);
+    const [footerData, setFooterData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    const fetchData = async () => {
+    const fetchNavbarData = async () => {
         try {
-            // Fetch data from the local JSON file
-            const response = await axios.get('/data/siteData.json');
-            const homeInfo = response.data.home[0]; // Access the first element of the home array
-            setHomeData(homeInfo);
-            console.log('Fetched home data:', homeInfo); // Log fetched data
-
-            // Fetch navbar and footer data from the same JSON file
-            const navbarInfo = response.data.navbar; // Assuming the navbar data is structured similarly
-            const footerInfo = response.data.footer; // Assuming the footer data is structured similarly
-            setNavbarData(navbarInfo);
-            setFooterData(footerInfo);
+            const data = await ApiService.getNavbarData();
+            console.log('Fetched navbar data:', data);
+            setNavbarData(data);
         } catch (error) {
-            console.error('Error fetching home data:', error);
+            console.error('Error fetching navbar data:', error);
+            setError('Failed to load data. Please try again later.');
+        } finally {
+            setLoading(false);
         }
     };
 
+    const fetchFooterData = async () => {
+        try {
+            const data = await ApiService.getFooterData();
+            console.log('Fetched footer data:', data); 
+            setFooterData(data); 
+        } catch (error) {
+            console.error('Error fetching footer data:', error);
+            setError('Failed to load data. Please try again later.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+
     useEffect(() => {
-        fetchData();
+        fetchNavbarData();
+        fetchFooterData();
     }, []);
 
-    if (!homeData || !navbarData || !footerData) {
-        return <div>Loading...</div>; // Show a loading state while data is being fetched
-    }
+
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>{error}</div>;
+    if (!navbarData) return <div>No Navbar data available</div>;
+    if (!footerData) return <div>No Footer data available</div>;
+
 
     return (
         <>
-            <section>
+            {navbarData && navbarData.length > 0 && (
                 <Navbar
-                    navbarItems={navbarData.navbarItems}
-                    companyDropdownItems={navbarData.companyDropdownItems}
+                    navbarItems={navbarData[0].navbarItems || []}
+                    companyDropdownItems={navbarData[0].companyDropdownItems || []}
+                    exploreDropdownItems={navbarData[0].exploreDropdownItems || []}
+                    partnerDropdownItems={navbarData[0].partnerDropdownItems || []}
+                    languageDropdownItems={navbarData[0].languageDropdownItems || []}
                 />
-                {children}
-                <Footer footerData={footerData.footerData} />
-            </section>
+            )}
+            <main>{children}</main>
+            {footerData && footerData.length > 0 && (
+                <Footer footerData={footerData[0].footerItems} />
+            )}
+
         </>
     );
 }

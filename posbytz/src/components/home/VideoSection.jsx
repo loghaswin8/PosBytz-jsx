@@ -1,8 +1,6 @@
 import React, { useState, useCallback } from 'react';
 
 const VideoSection = ({ videoData }) => {
-  const { title, subtitle, description, videoUrl } = videoData;
-
   // State to manage video loading
   const [videoLoaded, setVideoLoaded] = useState(false);
 
@@ -10,6 +8,13 @@ const VideoSection = ({ videoData }) => {
   const handleVideoLoad = useCallback(() => {
     setVideoLoaded(true);
   }, []);
+
+  // Check if videoData is defined and handle the case where it is not
+  if (!videoData) {
+    return <div>Loading...</div>; // Placeholder while loading
+  }
+
+  const { title, subtitle, description, videoUrl } = videoData;
 
   return (
     <div className="text-center py-10 px-5">
