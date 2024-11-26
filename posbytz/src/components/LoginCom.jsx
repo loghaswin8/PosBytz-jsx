@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { Link, useNavigate, useLocation } from "react-router-dom";
+
 
 const LoginCom = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({});
+    const [loading, setLoading] = useState(false);
+    const [successMessage, setSuccessMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -29,15 +35,47 @@ const LoginCom = () => {
         return valid;
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (validateForm()) {
-            console.log('Form submitted successfully');
+            try {
+                setLoading(true);
+                const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/login`, {
+                    email,
+                    password,
+                });
+
+                // Check if the response is successful
+                if (response.data.success) {
+                    setSuccessMessage('Login successful!');
+                    alert('Login successful!'); // Alert on success
+                    localStorage.setItem('userToken', response.data.token); // Store token
+                    // Optionally redirect the user
+                    // history.push('/dashboard');
+                } else {
+                    setErrorMessage('Invalid email or password');
+                    alert('Invalid email or password'); // Alert on failure
+                }
+            } catch (error) {
+                alert('Invalid email or password'); // Alert on error
+                console.error('Login error:', error);
+            } finally {
+                setLoading(false);
+            }
         } else {
             console.log('Validation failed', errors);
         }
     };
+
+    
+        
+      
+        // const handleLogin = () => {
+        //     login();
+        //     navigate("/Chatbot");
+        // };
+    
 
     return (
         <section className="flex justify-center items-center bg-gray-100">
@@ -103,13 +141,20 @@ const LoginCom = () => {
                                 </div>
                             </div>
 
+                            {errorMessage && <p className="text-red-500 text-sm mt-1">{errorMessage}</p>}
+
                             <p className="text-gray-800 text-center mt-[5px] text-[12px] mr-[235px] relative top-[25px]">Forgot password?</p>
                             <p className="text-gray-800 text-center mt-[5px] text-[12px] mr-[95px] w-[300px] relative top-[40px]" style={{ color: 'black' }}>By clicking Login, I accept the <a href="https://posbytz.com/terms-and-conditions/" target="_blank" className="text-blue-800">Terms &amp; Conditions</a></p>
                             <button
                                 type="submit"
                                 className="w-full bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 mt-[70px]"
+                                disabled={loading}
+                                // onClick={handleLogin}
                             >
-                                Login
+                                <Link to="/">
+                                    Login
+                                </Link>
+                                
                             </button>
                         </form>
                     </div>

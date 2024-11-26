@@ -15,7 +15,7 @@ const App = () => {
             exact={route.exact}
             element={<route.component />} 
           />
-        ))}
+        ))} 
       </Routes>
     </Router>
   );

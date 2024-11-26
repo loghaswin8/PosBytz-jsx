@@ -9,6 +9,7 @@ import TestimonialsSlider from '../components/home/TestimonialsSlider';
 import FaqSection from '../components/home/FaqSection';
 import Trustedbrands from '../components/home/Trustedbrands';
 import ApiService from '../api/ApiService';
+import Chatbot from '../components/chatBot/Chatbox';
 
 
 const Home = () => {
@@ -32,22 +33,28 @@ const Home = () => {
   useEffect(() => {
     fetchHomeData();
   }, []);
-  
-  if (loading) return <div>Loading...</div>; 
-  if (error) return <div>{error}</div>; 
-  if (!homeData) return <div>No data available</div>; 
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+  if (!homeData) return <div>No data available</div>;
 
   return (
-      <Layout>
-        <IntroContent introData={homeData.intro} />
-        <Features featuresData={homeData.features} />
-        <VideoSection videoData={homeData.videoSection} />
-        <ReasonsSection reasonsData={homeData.reasonsSection} />
-        <IntegrationSection integrationData={homeData.integrations} />
-        <Trustedbrands brand={homeData.brands } tagline={homeData.tagline} />
-        <TestimonialsSlider testimonialsData={homeData.testimonials} /> 
-        <FaqSection faqData={homeData.faqData} />
-      </Layout>
+    <>
+      <section>
+        <Layout>
+          <IntroContent introData={homeData.intro} />
+          <Features featuresData={homeData.features} />
+          <VideoSection videoData={homeData.videoSection} />
+          <ReasonsSection reasonsData={homeData.reasonsSection} />
+          <IntegrationSection integrationData={homeData.integrations} />
+          <Trustedbrands brand={homeData.brands} tagline={homeData.tagline} />
+          <TestimonialsSlider testimonialsData={homeData.testimonials} />
+          <FaqSection faqData={homeData.faqData} />
+        </Layout>
+      </section>
+      <Chatbot />
+    </>
+
   );
 };
 

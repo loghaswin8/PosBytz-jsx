@@ -1,4 +1,5 @@
 // src/routes.js
+import Chatbot from './components/chatBot/Chatbox';
 import AboutUs from './pages/AboutUs';
 import AccessPage from './pages/Access';
 import Careers from './pages/Careers';
@@ -41,6 +42,11 @@ const routes = [
     path: '/Career',
     component: Careers,
     exact: true
+  },
+  {
+    path: '/chatbot',
+    component: Chatbot,
+    exact: false
   }
 ];
 
